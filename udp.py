@@ -5,6 +5,7 @@ import base64
 import os
 import hashlib
 import random
+import readline
 
 BROADCAST_IP = '255.255.255.255'
 PORT = 50000
@@ -42,6 +43,7 @@ def handle_message(message, addr):
     if command == 'HEARTBEAT':
         name = parts[1]
         devices[name] = {'address': addr, 'last_seen': time.time()}
+        ##print(f"\n HEARTBEAT device {name}")
     elif command == 'TALK':
         msg_id, content = parts[1], parts[2]
         print(f"\nMensagem recebida de {addr}: {content}")
